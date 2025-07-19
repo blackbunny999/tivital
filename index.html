@@ -3,362 +3,123 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Tivital: app de produtividade e bem-estar com metas, hábitos e áreas verdes." />
-  <title>Tivital - Bem-estar e Foco</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Pacifico&family=Montserrat:wght@500;700&display=swap" rel="stylesheet" />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <title>Tivital - Conecte-se com a natureza em Guaíba</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --gradient-start: #43cea2;
-      --gradient-end: #185a9d;
-      --background-light: #f3f4f6;
-      --background-dark: #1e1e1e;
-      --text-light: #222;
-      --text-dark: #eee;
-      --white: #ffffff;
-      --accent: #ff9800;
-      --accent-dark: #ef6c00;
+      --green: #3d9a63; --green-dark: #2c7c4a; --orange: #f57c00; --orange-dark: #ef6c00;
+      --bg-light: #fefefe; --bg-dark: #1e1e1e; --text-light: #333; --text-dark: #eee;
     }
-
-    html[data-theme='dark'] {
-      --background: var(--background-dark);
-      --text: var(--text-dark);
-    }
-
-    html[data-theme='light'] {
-      --background: var(--background-light);
-      --text: var(--text-light);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--background);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    header {
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-      color: var(--white);
-      text-align: center;
-      padding: 4rem 1rem 3rem;
-      position: relative;
-    }
-
-    .logo {
-      display: flex;
-      justify-content: center;
-    }
-
-    .logo-icon {
-      width: 160px;
-    }
-
-    .logo-icon img {
-      width: 100%;
-      height: auto;
-    }
-
-    .dark-toggle {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: rgba(255, 255, 255, 0.15);
-      border: none;
-      color: white;
-      font-size: 1.1rem;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    header p {
-      font-size: 1.4rem;
-      margin-top: 1.5rem;
-      opacity: 0.95;
-    }
-
-    .cta {
-      margin-top: 2rem;
-    }
-
-    .btn-cta {
-      background: var(--accent);
-      color: white;
-      font-weight: bold;
-      padding: 1rem 2rem;
-      border-radius: 12px;
-      font-size: 1.1rem;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-      transition: background 0.3s ease, transform 0.2s ease;
-    }
-
-    .btn-cta:hover {
-      background: var(--accent-dark);
-      transform: translateY(-2px);
-    }
-
-    .wave-divider {
-      width: 100%;
-      height: 60px;
-      background: var(--background);
-      clip-path: polygon(0 40%, 100% 0, 100% 100%, 0% 100%);
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 3rem auto;
-      padding: 0 1.5rem;
-    }
-
-    .section {
-      background: var(--white);
-      padding: 2.5rem;
-      margin-bottom: 3rem;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-    }
-
-    [data-theme='dark'] .section {
-      background: #2e2e2e;
-    }
-
-    .section h2 {
-      font-family: 'Montserrat', sans-serif;
-      color: var(--gradient-end);
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .section p, .section li {
-      font-size: 1.1rem;
-    }
-
-    .section ul {
-      padding-left: 1.5rem;
-    }
-
-    .section ul li {
-      margin-bottom: 0.6rem;
-    }
-
-    .screenshot {
-      width: 100%;
-      border-radius: 12px;
-      margin-top: 1rem;
-      border: 1px solid #ccc;
-    }
-
-    .download-links {
-      list-style: none;
-      padding: 0;
-      margin-top: 1.5rem;
-    }
-
-    .btn-download {
-      display: inline-block;
-      background: linear-gradient(135deg, #ffb74d, #f57c00);
-      color: white;
-      padding: 0.9rem 1.6rem;
-      border-radius: 10px;
-      font-weight: bold;
-      margin: 0.5rem 0;
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .btn-download:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-    }
-
-    .newsletter-form {
-      margin-top: 1.5rem;
-    }
-
-    .newsletter-form input[type="email"] {
-      padding: 0.8rem 1rem;
-      width: 70%;
-      max-width: 400px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      margin-right: 0.5rem;
-      font-size: 1rem;
-    }
-
-    .newsletter-form button {
-      background: var(--accent);
-      color: white;
-      padding: 0.8rem 1.5rem;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .newsletter-form button:hover {
-      background: var(--accent-dark);
-    }
-
-    .testimonials {
-      display: grid;
-      gap: 1.5rem;
-    }
-
-    .testimonial {
-      background: #fafafa;
-      border-left: 4px solid var(--accent);
-      padding: 1rem 1.5rem;
-      border-radius: 8px;
-      font-style: italic;
-    }
-
-    [data-theme='dark'] .testimonial {
-      background: #333;
-    }
-
-    .social {
-      text-align: center;
-      margin-top: 2rem;
-    }
-
-    .social a {
-      margin: 0 0.5rem;
-      color: var(--gradient-end);
-      font-size: 1.8rem;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      background: var(--gradient-end);
-      color: white;
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 700px) {
-      .section {
-        padding: 2rem 1.2rem;
-      }
-
-      .section h2 {
-        font-size: 1.5rem;
-      }
-
-      .newsletter-form input[type="email"] {
-        width: 100%;
-        margin-bottom: 0.8rem;
-      }
-
-      .newsletter-form button {
-        width: 100%;
-      }
-
-      .logo-icon {
-        width: 120px;
-      }
+    html[data-theme='light'] { --bg: var(--bg-light); --text: var(--text-light); }
+    html[data-theme='dark'] { --bg: var(--bg-dark); --text: var(--text-dark); }
+    * { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
+    body { font-family:'Inter', sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+    a { text-decoration:none; color:inherit; }
+    header { background: linear-gradient(to right, var(--green), var(--green-dark)); color:white;
+      text-align:center; padding:4rem 1rem 2rem; position:relative; }
+    .dark-toggle { position:absolute; top:1rem; right:1rem; background:rgba(255,255,255,0.2);
+      color:white; border:none; padding:0.5rem 1rem; border-radius:8px; cursor:pointer; }
+    .logo { display:flex; justify-content:center; margin-bottom:2rem; }
+    .logo img { width:240px; max-width:90%; height:auto; }
+    .headline { font-size:1.9rem; font-weight:600; margin-bottom:1rem; }
+    .subtext { font-size:1.2rem; opacity:0.95; max-width:600px; margin:0 auto; }
+    .btn-cta { margin-top:2rem; background:var(--orange); color:white; padding:1rem 2rem;
+      border-radius:12px; font-weight:bold; font-size:1.1rem; display:inline-block; transition:background .3s;}
+    .btn-cta:hover { background:var(--orange-dark); }
+    main { max-width:1100px; margin:3rem auto; padding:0 1.5rem; }
+    section { margin-bottom:3rem; }
+    section h2 { font-family:'Montserrat', sans-serif; font-size:2rem; margin-bottom:1rem;
+      color:var(--green-dark); text-align:center; }
+    .section-content { background:white; padding:2rem; border-radius:16px; box-shadow:0 8px 20px rgba(0,0,0,0.05); }
+    html[data-theme='dark'] .section-content { background:#2b2b2b; }
+    ul { padding-left:1.5rem; }
+    ul li { margin-bottom:0.6rem; font-size:1.1rem; }
+    .testimonials { display:grid; gap:1.5rem; }
+    .testimonial { background:#f6f6f6; border-left:4px solid var(--green); padding:1rem 1.5rem;
+      border-radius:8px; font-style:italic; }
+    html[data-theme='dark'] .testimonial { background:#333; }
+    .carousel { position:relative; overflow:hidden; border-radius:12px; }
+    .slides { display:flex; transition:transform .5s ease; }
+    .slides img { width:100%; flex-shrink:0; }
+    .carousel-controls { position:absolute; top:50%; width:100%; display:flex; justify-content:space-between;
+      transform:translateY(-50%); }
+    .carousel-controls button { background:rgba(0,0,0,0.3); border:none; color:white;
+      font-size:1.5rem; padding:0.5rem 1rem; cursor:pointer; }
+    footer { background:var(--green-dark); color:white; text-align:center; padding:2rem 1rem; }
+    @media(max-width:700px){
+      .logo img { width:200px; }
+      .headline { font-size:1.6rem; }
+      .carousel-controls button { font-size:1.2rem; }
     }
   </style>
 </head>
 <body>
-
   <header>
-    <button class="dark-toggle" onclick="toggleTheme()">🌗 Tema</button>
-    <div class="logo">
-      <div class="logo-icon">
-        <img src="tivital-logo.png" alt="Logo Tivital">
-      </div>
-    </div>
-    <p>Seu guia para hábitos saudáveis e produtividade com propósito</p>
-    <div class="cta">
-      <a href="#download" class="btn-cta">📲 Baixar agora</a>
-    </div>
+    <button class="dark-toggle" onclick="toggleTheme()">🌙 Tema</button>
+    <div class="logo"><img src="tivital-logo.png" alt="Logo Tivital"></div>
+    <div class="headline">Conecte sua rotina à natureza em Guaíba</div>
+    <p class="subtext">Explore áreas verdes da cidade enquanto cultiva hábitos saudáveis com o Tivital.</p>
+    <a href="#download" class="btn-cta">📲 Baixar o App</a>
   </header>
 
-  <div class="wave-divider"></div>
-
-  <main class="container">
-    <section class="section" data-aos="fade-up">
-      <h2>Sobre o App</h2>
-      <p><strong>Tivital</strong> (Time + Vida) é um app que une produtividade e bem-estar. Descubra áreas verdes, defina metas, registre hábitos e acompanhe sua evolução com gráficos e lembretes inteligentes.</p>
-    </section>
-
-    <section class="section" data-aos="fade-up">
-      <h2>Funcionalidades</h2>
-      <ul>
-        <li>🌿 Mapeamento de áreas verdes próximas</li>
-        <li>📚 Metas de leitura, foco e caminhada</li>
-        <li>📈 Estatísticas semanais e gráficos</li>
-        <li>🔔 Lembretes e notificações motivacionais</li>
-        <li>🧠 Interface moderna e leve</li>
-      </ul>
-    </section>
-
-    <section class="section" data-aos="zoom-in">
-      <h2>Capturas de Tela</h2>
-      <img src="https://via.placeholder.com/1000x500" alt="Tela do app Tivital" class="screenshot">
-    </section>
-
-    <section class="section" id="download" data-aos="fade-up">
-      <h2>Baixe Gratuitamente</h2>
-      <p>Disponível nas principais lojas de aplicativos:</p>
-      <ul class="download-links">
-        <li><a class="btn-download" href="#">📱 Google Play</a></li>
-        <li><a class="btn-download" href="#">🍎 App Store</a></li>
-      </ul>
-    </section>
-
-    <section class="section" data-aos="fade-up">
-      <h2>Depoimentos</h2>
-      <div class="testimonials">
-        <div class="testimonial">“Com o Tivital, eu finalmente consegui manter uma rotina de leitura e caminhada.” – Ana S.</div>
-        <div class="testimonial">“Interface linda e funcional. Me ajuda a manter o foco todos os dias!” – Rafael M.</div>
-        <div class="testimonial">“Amei o mapa de áreas verdes! Uso sempre no fim de semana.” – Juliana P.</div>
+  <main>
+    <section id="gallery">
+      <h2>Áreas Verdes em Guaíba</h2>
+      <div class="section-content carousel" data-aos="fade-up">
+        <div class="slides">
+          <img src="${'https://via.placeholder.com/1000x500?text=Orla+do+Gua%C3%ADba'}" alt="Orla do Guaíba">
+          <img src="${'https://via.placeholder.com/1000x500?text=Parque+Pontal'}" alt="Parque Pontal de Guaíba">
+          <img src="${'https://via.placeholder.com/1000x500?text=Pra%C3%A7a+e+verde'}" alt="Praça verde de Guaíba">
+        </div>
+        <div class="carousel-controls">
+          <button onclick="prevSlide()">‹</button>
+          <button onclick="nextSlide()">›</button>
+        </div>
       </div>
     </section>
 
-    <section class="section" data-aos="fade-up">
-      <h2>Newsletter</h2>
-      <p>Receba novidades e dicas direto no seu e-mail:</p>
-      <form class="newsletter-form">
-        <input type="email" placeholder="Seu e-mail" required />
-        <button type="submit">Inscrever</button>
-      </form>
+    <section>
+      <h2>Funcionalidades</h2>
+      <div class="section-content" data-aos="fade-up">
+        <ul>
+          <li>🌱 Encontre parques e orlas verdes perto de você</li>
+          <li>📘 Metas personalizadas para hábitos, leitura e foco</li>
+          <li>📊 Acompanhe seu progresso com gráficos semanais</li>
+          <li>🔔 Lembretes motivacionais e tracking de rotina</li>
+          <li>💡 Interface limpa, intuitiva e visualmente inspiradora</li>
+        </ul>
+      </div>
     </section>
 
-    <section class="section social" data-aos="fade-up">
-      <h2>Siga nas Redes</h2>
-      <a href="#">📸</a>
-      <a href="#">🐦</a>
-      <a href="#">📘</a>
+    <section id="download">
+      <h2>Baixe Agora</h2>
+      <div class="section-content" data-aos="fade-up">
+        <p>Disponível nas lojas:</p>
+        <a href="#">📱 Google Play</a> <a href="#">🍎 App Store</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Depoimentos</h2>
+      <div class="section-content testimonials" data-aos="fade-up">
+        <div class="testimonial">"O Tivital me conectou com a natureza de Guaíba e me ajudou a manter hábitos saudáveis!" – Laura P.</div>
+        <div class="testimonial">"Adoro planejar minhas caminhadas na orla usando o app." – Bruno S.</div>
+      </div>
     </section>
   </main>
 
-  <footer>
-    &copy; 2025 Tivital. Todos os direitos reservados.
-  </footer>
+  <footer>&copy; 2025 Tivital. Todos os direitos reservados.</footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init();
-
-    function toggleTheme() {
-      const html = document.documentElement;
-      const current = html.getAttribute("data-theme");
-      html.setAttribute("data-theme", current === "dark" ? "light" : "dark");
+    let current = 0;
+    const slides = document.querySelector('.slides');
+    const total = slides.children.length;
+    function showSlide(idx){ slides.style.transform = 'translateX(' + (-idx * 100) + '%)'; }
+    function nextSlide(){ current = (current + 1) % total; showSlide(current); }
+    function prevSlide(){ current = (current - 1 + total) % total; showSlide(current); }
+    setInterval(nextSlide, 5000);
+    function toggleTheme(){ const html = document.documentElement;
+      html.setAttribute('data-theme', html.getAttribute('data-theme')==='dark'?'light':'dark');
     }
   </script>
 </body>
