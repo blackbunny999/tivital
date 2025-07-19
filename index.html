@@ -1,20 +1,33 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Tivital: app de produtividade e bem-estar com metas, hábitos e áreas verdes. Baixe agora!" />
-  <title>Tivital - Sua Vida com Propósito</title>
+  <meta name="description" content="Tivital: app de produtividade e bem-estar com metas, hábitos e áreas verdes." />
+  <title>Tivital - Bem-estar e Foco</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Pacifico&family=Montserrat:wght@500;700&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <style>
     :root {
       --gradient-start: #43cea2;
       --gradient-end: #185a9d;
-      --background: #f3f4f6;
+      --background-light: #f3f4f6;
+      --background-dark: #1e1e1e;
+      --text-light: #222;
+      --text-dark: #eee;
       --white: #ffffff;
-      --text: #222;
       --accent: #ff9800;
       --accent-dark: #ef6c00;
+    }
+
+    html[data-theme='dark'] {
+      --background: var(--background-dark);
+      --text: var(--text-dark);
+    }
+
+    html[data-theme='light'] {
+      --background: var(--background-light);
+      --text: var(--text-light);
     }
 
     * {
@@ -41,6 +54,7 @@
       color: var(--white);
       text-align: center;
       padding: 4rem 1rem 3rem;
+      position: relative;
     }
 
     .logo {
@@ -50,13 +64,24 @@
 
     .logo-icon {
       width: 160px;
-      height: auto;
     }
 
     .logo-icon img {
       width: 100%;
       height: auto;
-      object-fit: contain;
+    }
+
+    .dark-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      color: white;
+      font-size: 1.1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
     }
 
     header p {
@@ -70,7 +95,6 @@
     }
 
     .btn-cta {
-      display: inline-block;
       background: var(--accent);
       color: white;
       font-weight: bold;
@@ -87,7 +111,6 @@
     }
 
     .wave-divider {
-      position: relative;
       width: 100%;
       height: 60px;
       background: var(--background);
@@ -106,7 +129,10 @@
       margin-bottom: 3rem;
       border-radius: 16px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    [data-theme='dark'] .section {
+      background: #2e2e2e;
     }
 
     .section h2 {
@@ -116,8 +142,7 @@
       margin-bottom: 1rem;
     }
 
-    .section p,
-    .section li {
+    .section p, .section li {
       font-size: 1.1rem;
     }
 
@@ -133,7 +158,7 @@
       width: 100%;
       border-radius: 12px;
       margin-top: 1rem;
-      border: 1px solid #ddd;
+      border: 1px solid #ccc;
     }
 
     .download-links {
@@ -163,7 +188,7 @@
       margin-top: 1.5rem;
     }
 
-    .newsletter-form input[type='email'] {
+    .newsletter-form input[type="email"] {
       padding: 0.8rem 1rem;
       width: 70%;
       max-width: 400px;
@@ -188,13 +213,29 @@
       background: var(--accent-dark);
     }
 
+    .testimonials {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .testimonial {
+      background: #fafafa;
+      border-left: 4px solid var(--accent);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      font-style: italic;
+    }
+
+    [data-theme='dark'] .testimonial {
+      background: #333;
+    }
+
     .social {
-      margin-top: 2rem;
       text-align: center;
+      margin-top: 2rem;
     }
 
     .social a {
-      display: inline-block;
       margin: 0 0.5rem;
       color: var(--gradient-end);
       font-size: 1.8rem;
@@ -208,27 +249,16 @@
       font-size: 0.95rem;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
     @media (max-width: 700px) {
       .section {
-        padding: 1.8rem 1.2rem;
+        padding: 2rem 1.2rem;
       }
 
       .section h2 {
         font-size: 1.5rem;
       }
 
-      .newsletter-form input[type='email'] {
+      .newsletter-form input[type="email"] {
         width: 100%;
         margin-bottom: 0.8rem;
       }
@@ -244,10 +274,12 @@
   </style>
 </head>
 <body>
+
   <header>
+    <button class="dark-toggle" onclick="toggleTheme()">🌗 Tema</button>
     <div class="logo">
       <div class="logo-icon">
-        <img src="tivital-logo.png" alt="Logo Tivital" />
+        <img src="tivital-logo.png" alt="Logo Tivital">
       </div>
     </div>
     <p>Seu guia para hábitos saudáveis e produtividade com propósito</p>
@@ -259,12 +291,12 @@
   <div class="wave-divider"></div>
 
   <main class="container">
-    <section class="section">
+    <section class="section" data-aos="fade-up">
       <h2>Sobre o App</h2>
       <p><strong>Tivital</strong> (Time + Vida) é um app que une produtividade e bem-estar. Descubra áreas verdes, defina metas, registre hábitos e acompanhe sua evolução com gráficos e lembretes inteligentes.</p>
     </section>
 
-    <section class="section">
+    <section class="section" data-aos="fade-up">
       <h2>Funcionalidades</h2>
       <ul>
         <li>🌿 Mapeamento de áreas verdes próximas</li>
@@ -275,12 +307,12 @@
       </ul>
     </section>
 
-    <section class="section">
+    <section class="section" data-aos="zoom-in">
       <h2>Capturas de Tela</h2>
-      <img src="https://via.placeholder.com/1000x500" alt="Tela do app Tivital com metas e áreas verdes" class="screenshot" />
+      <img src="https://via.placeholder.com/1000x500" alt="Tela do app Tivital" class="screenshot">
     </section>
 
-    <section class="section" id="download">
+    <section class="section" id="download" data-aos="fade-up">
       <h2>Baixe Gratuitamente</h2>
       <p>Disponível nas principais lojas de aplicativos:</p>
       <ul class="download-links">
@@ -289,25 +321,45 @@
       </ul>
     </section>
 
-    <section class="section">
-      <h2>Assine nossa Newsletter</h2>
-      <p>Receba dicas semanais de bem-estar e novidades sobre o app:</p>
+    <section class="section" data-aos="fade-up">
+      <h2>Depoimentos</h2>
+      <div class="testimonials">
+        <div class="testimonial">“Com o Tivital, eu finalmente consegui manter uma rotina de leitura e caminhada.” – Ana S.</div>
+        <div class="testimonial">“Interface linda e funcional. Me ajuda a manter o foco todos os dias!” – Rafael M.</div>
+        <div class="testimonial">“Amei o mapa de áreas verdes! Uso sempre no fim de semana.” – Juliana P.</div>
+      </div>
+    </section>
+
+    <section class="section" data-aos="fade-up">
+      <h2>Newsletter</h2>
+      <p>Receba novidades e dicas direto no seu e-mail:</p>
       <form class="newsletter-form">
         <input type="email" placeholder="Seu e-mail" required />
         <button type="submit">Inscrever</button>
       </form>
     </section>
 
-    <section class="section social">
-      <h2>Siga nas Redes Sociais</h2>
-      <a href="#" title="Instagram">📸</a>
-      <a href="#" title="Twitter">🐦</a>
-      <a href="#" title="Facebook">📘</a>
+    <section class="section social" data-aos="fade-up">
+      <h2>Siga nas Redes</h2>
+      <a href="#">📸</a>
+      <a href="#">🐦</a>
+      <a href="#">📘</a>
     </section>
   </main>
 
   <footer>
     &copy; 2025 Tivital. Todos os direitos reservados.
   </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute("data-theme");
+      html.setAttribute("data-theme", current === "dark" ? "light" : "dark");
+    }
+  </script>
 </body>
 </html>
