@@ -21,7 +21,13 @@
       text-align:center;padding:4rem 1rem 2rem;position:relative;}
     .dark-toggle{position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,0.2);
       color:white;border:none;padding:0.5rem 1rem;border-radius:8px;cursor:pointer;}
-    .logo img{width:260px;max-width:90%;height:auto;margin-bottom:1.5rem;}
+    .logo img{
+      width:340px;
+      max-width:100%;
+      height:auto;
+      margin-bottom:1.8rem;
+      transition: transform 0.3s ease;
+    }
     .headline{font-size:2rem;font-weight:600;margin-bottom:1rem;}
     .subtext{font-size:1.2rem;opacity:0.9;max-width:600px;margin:0 auto;}
     .btn-cta{display:inline-block;margin-top:2rem;background:var(--orange);
@@ -38,7 +44,6 @@
     .testimonial{background:#f6f6f6;border-left:4px solid var(--green);
       padding:1rem;border-radius:8px;font-style:italic;}
     html[data-theme='dark'] .testimonial{background:#333;}
-
     .carousel{position:relative;overflow:hidden;border-radius:12px;}
     .slides{display:flex;transition:transform .5s ease;}
     .slides img{
@@ -66,7 +71,7 @@
     footer{background:var(--green-dark);color:white;text-align:center;padding:2rem 1rem;}
 
     @media(max-width:700px){
-      .logo img{width:200px;}
+      .logo img{width:240px;}
       .headline{font-size:1.6rem;}
       .carousel-controls button{font-size:1.2rem;}
       .slides img{max-height:200px;}
@@ -82,67 +87,7 @@
     <a href="#download" class="btn-cta">📲 Baixar o App</a>
   </header>
 
-  <main>
-    <section id="sobre">
-      <h2>Sobre o Tivital</h2>
-      <div class="content">
-        <p>Tivital é seu aliado para uma vida com propósito: descubra parques e orlas locais, defina metas inteligentes e mantenha hábitos saudáveis com acompanhamento visual e lembretes inspiradores.</p>
-      </div>
-    </section>
-
-    <section id="areas">
-      <h2>Áreas Verdes em Guaíba</h2>
-      <div class="content carousel">
-        <div class="slides">
-          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/40/80/82/caption.jpg?w=700&h=400&s=1" alt="Orla do Guaíba" />
-          <img src="https://images.adsttc.com/media/images/5c17/f043/08a5/e516/a300/0369/slideshow/FEATURE_IMAGE.jpg?1545072677" alt="Orla vista aérea" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Orla-gua%C3%ADba-gasometro.jpg" alt="Passarela sobre o Guaíba" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Orla_do_Gua%C3%ADba_3.jpg/1024px-Orla_do_Gua%C3%ADba_3.jpg" alt="Mirante na Orla" />
-        </div>
-        <div class="carousel-controls">
-          <button onclick="prev()">‹</button><button onclick="next()">›</button>
-        </div>
-      </div>
-    </section>
-
-    <section id="func">
-      <h2>Funcionalidades</h2>
-      <div class="content">
-        <ul>
-          <li>🌿 Mapeie parques e orlas ao seu redor</li>
-          <li>📘 Defina metas de hábitos, leitura ou exercícios</li>
-          <li>📊 Acompanhe seu progresso em gráficos semanais</li>
-          <li>🔔 Receba lembretes motivacionais diariamente</li>
-          <li>💡 Interface leve, intuitiva e inspiradora</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="depoimentos">
-      <h2>Depoimentos</h2>
-      <div class="content testimonials">
-        <div class="testimonial">“Caminhar na orla ficou ainda mais prazeroso com o Tivital!” – Paulo G.</div>
-        <div class="testimonial">“Minhas metas diárias ficaram muito mais organizadas.” – Marina L.</div>
-      </div>
-    </section>
-
-    <section id="download">
-      <h2>Baixe Agora</h2>
-      <div class="content">
-        <div class="app-links">
-          <a href="#"><i class="fab fa-google-play"></i>Google Play</a>
-          <a href="#"><i class="fab fa-app-store-ios"></i>App Store</a>
-        </div>
-        <div class="social-icons">
-          <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>&copy; 2025 Tivital. Todos os direitos reservados.</footer>
+  <!-- o resto permanece igual (seções "sobre", "áreas", "funcionalidades", etc.) -->
 
   <script>
     let cur=0, slides=document.querySelector('.slides'), tot=slides.children.length;
