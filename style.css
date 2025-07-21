@@ -184,7 +184,7 @@ footer {
   margin-right: 0.5rem;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 700px) {
   .logo img { width: 240px; }
   .headline { font-size: 1.6rem; }
 }
